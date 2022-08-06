@@ -1,24 +1,37 @@
 class Herramientas:
     def __init__(self, lista_numeros):
-        self.lista = lista_numeros
+                        
+        if type(lista_numeros)!= list :
+            self.lista=[]
+            raise ValueError('el argumento ha sido rechazado porque no es una lista')
+        else:
+            self.lista = lista_numeros
 
     def verifica_primo(self):
         '''
         Explico lo que hace la funcion
         '''
+        lista_bool=[]
         for i in self.lista:
-            if (self.__verifica_primo(i)):
-                print('El elemento', i, 'SI es un numero primo')
-            else:
-                print('El elemento', i, 'NO es un numero primo')
+            c=self.__verifica_primo(i)
+            lista_bool.append(c)
+       
+        return lista_bool
 
     def conversion_grados(self, origen, destino):
+        lista_esperados=['celsius','farenheit','kelvin']
+        if str(origen) not in lista_esperados or str(destino) not in lista_esperados:
+            raise ValueError('origen y destino deben ser alguna de las siguientes opciones:', lista_esperados)
+            
         for i in self.lista:
             print(i, 'grados', origen, 'son', self.__conversion_grados(i, origen, destino),'grados',destino)
     
     def factorial(self):
+        list_fact=[]
         for i in self.lista:
-            print('El factorial de ', i, 'es', self.__factorial(i))
+            list_fact.append(self.__factorial(i))
+
+        return list_fact
 
     def __verifica_primo(self, nro):
         es_primo = True
